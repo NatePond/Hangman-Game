@@ -3,7 +3,10 @@ body {
 }
 
 
-
+#prize {
+  height: 200px;
+  width: 300x;
+}
 #blanks li {
   list-style: none;
   display: inline-block;

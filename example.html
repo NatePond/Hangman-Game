@@ -6,16 +6,16 @@
 <div class="wrapper">
     <div id="buttons">
     </div>  
- <!--    <p id="catagoryName"></p> -->
+    <p id="catagoryName"></p>
     <div id="hold">
     </div>
     <p id="mylives"></p>
     <p id="clue">Clue -</p>  
      <canvas id="stickman">This Text will show if the Browser does NOT support HTML5 Canvas tag</canvas>
-   <!--  <div class="container">
+    <div class="container">
       <button id="hint">Hint</button>
       <button id="reset">Play again</button>
-    </div> -->
+    </div>
 </div>
 
 
@@ -178,12 +178,11 @@
 
 
     // OnClick Function
-     check = function (event) {
-      var guess = event.key
-      list.onkeyup = function () {
-        var geuss = (this.innerHTML);
-        this.setAttribute("class", "active");
-        this.onkeyup = null;
+    console.log(word)
+     check = function () {
+      document.onclick = function() {
+        // this.setAttribute("class", "active");
+        this.onclick clicknull;
         for (var i = 0; i < word.length; i++) {
           if (word[i] === geuss) {
             geusses[i].innerHTML = geuss;
@@ -227,7 +226,9 @@
     }
 
     play();
-  
+    
+
+    console.log(word)
 
      // Reset
 
@@ -235,8 +236,8 @@
       correct.parentNode.removeChild(correct);
       letters.parentNode.removeChild(letters);
       showClue.innerHTML = "";
-      // context.clearRect(0, 0, 400, 400);
-      // play();
+      context.clearRect(0, 0, 400, 400);
+      play();
     }
   }
 </script>
