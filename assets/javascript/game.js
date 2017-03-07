@@ -1,11 +1,11 @@
 window.onload = function() {
     var wins = 0;
     var limbs = 6;
-    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h",
-        "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-        "t", "u", "v", "w", "x", "y", "z"
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H",
+        "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+        "T", "U", "V", "W", "X", "Y", "Z"
     ];
-    var monster = ["xenomorph", "cenobite", "predator", "pyramid-head", "terminator", "freddy", "jason", "babadook", "jaws", "brundlefly", "gremlin", "pennywise", "jigsaw", "samara", "hannibal", "michael-myers", "leatherface"];
+    var monster = ["XENOMORPH", "CENOBITE", "PREDATOR", "PYRAMID-HEAD", "TERMINATOR", "FREDDY", "JASON", "BABADOOK", "JAWS", "BRUNDLEFLY", "GREMLIN", "PENNYWISE", "JIGSAW", "SAMARA", "HANNIBAL", "MICHAEL-MYRES", "LEATHERFACE"];
     var word;
     word = monster[Math.floor(Math.random() * monster.length)]
     var guess;
@@ -27,6 +27,7 @@ window.onload = function() {
             guess.setAttribute("class", "guess");
             if (word[i] === "-") {
                 guess.innerHTML = "-";
+                right++;
             } else {
                 guess.innerHTML = "_";
             }
@@ -40,12 +41,11 @@ window.onload = function() {
     check = function() {
       document.onkeypress = function(event) {
           var guess = event.key;
-          guess.onkeypress = null;
+          guess.onkeydown = null;
           for (var i = 0; i < word.length; i++) {
-              guess.onkeyup = null;
               if (word[i] === guess) {
                   guesses[i].innerHTML = guess;
-                  right++
+                  right++;
               }
           }
           var i = (word.indexOf(guess))
