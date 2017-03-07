@@ -1,11 +1,11 @@
 window.onload = function() {
     var wins = 0;
     var limbs = 6;
-    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H",
-        "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-        "T", "U", "V", "W", "X", "Y", "Z"
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h",
+        "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+        "t", "u", "v", "w", "x", "y", "z"
     ];
-    var monster = ["XENOMORPH", "CENOBITE", "PREDATOR", "PYRAMID-HEAD", "TERMINATOR", "FREDDY", "JASON", "BABADOOK", "JAWS", "BRUNDLEFLY", "GREMLIN", "PENNYWISE", "JIGSAW", "SAMARA", "HANNIBAL", "MICHAEL-MYRES", "LEATHERFACE"];
+    var monster = ["xenomorph", "cenobite", "predator", "pyramid-head", "terminator", "freddy", "jason", "babadook", "jaws", "brundlefly", "gremlin", "pennywise", "jigsaw", "samara", "hannibal", "michael-myers", "leatherface"];
     var word;
     word = monster[Math.floor(Math.random() * monster.length)]
     var guess;
