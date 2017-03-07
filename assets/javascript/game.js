@@ -38,71 +38,71 @@ window.onload = function() {
         }
       check();
     }
+
     check = function() {
+      
       document.onkeypress = function(event) {
-          var guess = event.key;
-          guess.onkeydown = null;
-          for (var i = 0; i < word.length; i++) {
-              if (word[i] === guess) {
-                  guesses[i].innerHTML = guess;
-                  right++;
-              }
-          }
-          var i = (word.indexOf(guess))
-          if (i === -1) {
-              limbs--;
-              wrong.push(guess);
-              document.getElementById("guessed").innerHTML = wrong;
-          }
-          console.log(limbs);
-          document.getElementById("limbs").innerHTML = limbs;
+        var guess = event.key;
+        for (var i = 0; i < word.length; i++) {
+            if (word[i] === guess) {
+                guesses[i].innerHTML = guess;
+                right++;
+            }
+        
+        }
+        var i = (word.indexOf(guess))
+        if (i === -1) {
+            limbs--;
+            wrong.push(guess);
+            document.getElementById("guessed").innerHTML = wrong;
+        }
 
-          if (limbs < 1) {
-              $(".guess").empty();
-              var audio = new Audio('assets/Disappointed.mp3');
-              audio.play();
-              document.getElementById("prize").src = "assets/images/fail.png";
-              correct.parentNode.removeChild(correct);
-              limbs = 6;
-              right = 0;
-              $(".blanks").empty();
-              $(".guessed").empty();
-              game();
-              $(".blanks").empty();
-              $(".guessed").empty();
-              limbs = 6;
-              right = 0;
-              game();
-              play();
-          }
-              $(".class").empty();
-          if (right === word.length) {
-              guess.onkeyup = null;
-              var audio = new Audio('assets/yay.mp3');
-              audio.play();
-              wins++;
-              document.getElementById("wins").innerHTML = wins;
-              document.getElementById("prize").src = "assets/images/" + word + ".png";
-              // correct.parentNode.removeChild(correct);
-              // guessed.parentNode.removeChild(guessed);
-              // guesses = [ ];
-              // wrong = [ ]; 
-              limbs = 6;
-              right = 0;
-              document.getElementById("blanks").html = ""
-              document.getElementById("blanks").html = ""
-              $(".blanks").empty();
-              $(".guessed").empty();
-              game();
-              $(".blanks").empty();
-              $(".guessed").empty();
-              limbs = 6;
-              right = 0;
-              game();
-              play();
+        console.log(limbs);
+        document.getElementById("limbs").innerHTML = limbs;
 
-          }
-          
+        if (limbs < 1) {
+            $(".guess").empty();
+            var audio = new Audio('assets/Disappointed.mp3');
+            audio.play();
+            document.getElementById("prize").src = "assets/images/fail.png";
+            correct.parentNode.removeChild(correct);
+            limbs = 6;
+            right = 0;
+            $(".blanks").empty();
+            $(".guessed").empty();
+            game();
+            $(".blanks").empty();
+            $(".guessed").empty();
+            limbs = 6;
+            right = 0;
+            game();
+            play();
+            $("#prizename").empty();
+        }
+
+            $(".class").empty();
+        if (right === word.length) {
+            guess.onkeyup = null;
+            var audio = new Audio('assets/yay.mp3');
+            audio.play();
+            wins++;
+            document.getElementById("wins").innerHTML = wins;
+            document.getElementById("prize").src = "assets/images/" + word + ".png";
+            document.getElementById("prizename").innerHTML = word;
+            limbs = 6;
+            right = 0;
+            document.getElementById("blanks").html = ""
+            document.getElementById("blanks").html = ""
+            $(".blanks").empty();
+            $(".guessed").empty();
+            game();
+            $(".blanks").empty();
+            $(".guessed").empty();
+            limbs = 6;
+            right = 0;
+            game();
+            play();
+        }
       }
     }
 
@@ -120,21 +120,10 @@ window.onload = function() {
               game();
               check();
       }
+  console.log(word);
 
+  game();
 
-
-
-   
-
-
-
-console.log(word);
-
-game();
-  
-
-
-
-document.getElementById("wins").innerHTML = wins;
+  document.getElementById("wins").innerHTML = wins;
 
 }
