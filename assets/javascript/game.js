@@ -39,38 +39,43 @@ window.onload = function() {
     }
 
     confirm = function() {
-      document.onkeypress = function(event) {
+      var trigger = false;
+      document.onkeydown = function(event) {
         var guess = event.key;
-        for (var i = 0; i < word.length; i++) {
-          if (word[i] === guess) {
-            guesses[i].innerHTML = guess;
-            right++;
+        if(!trigger){
+          trigger = true;
+          for (var i = 0; i < word.length; i++) {
+            if (word[i] === guess) {
+              guesses[i].innerHTML = guess;
+              right++;
+            }
+          }
+
+          var i = (word.indexOf(guess))
+          if (i === -1) {
+            limbs--;
+            wrong.push(guess);
+            document.getElementById("guessed").innerHTML = wrong;
+          }
+
+          console.log(limbs);
+          document.getElementById("limbs").innerHTML = limbs;
+
+          if (limbs < 1) {
+            $(".guess").empty();
+            var audio = new Audio('assets/Disappointed.mp3');
+            audio.play();
+            document.getElementById("prize").src = "assets/images/fail.png";
+            correct.parentNode.removeChild(correct);
+            play();
+            $("#prizename").empty();
           }
         }
-
-        var i = (word.indexOf(guess))
-        if (i === -1) {
-          limbs--;
-          wrong.push(guess);
-          document.getElementById("guessed").innerHTML = wrong;
-        }
-
-        console.log(limbs);
-        document.getElementById("limbs").innerHTML = limbs;
-
-        if (limbs < 1) {
-          $(".guess").empty();
-          var audio = new Audio('assets/Disappointed.mp3');
-          audio.play();
-          document.getElementById("prize").src = "assets/images/fail.png";
-          correct.parentNode.removeChild(correct);
-          play();
-          $("#prizename").empty();
-        }
-
+      };
+      document.onkeyup = function (){
+        trigger = false;
         $(".class").empty();
         if (right === word.length || right > word.length) {
-          guess.onkeyup = null;
           var audio = new Audio('assets/yay.mp3');
           audio.play();
           wins++;
@@ -79,7 +84,7 @@ window.onload = function() {
           document.getElementById("prizename").innerHTML = word;
           play();
         }
-      }
+      };
     }
 
     play = function() {
