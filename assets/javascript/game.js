@@ -5,8 +5,7 @@ window.onload = function() {
     "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
     "t", "u", "v", "w", "x", "y", "z"
   ];
-  // var monster = ["pyramid-head", "leatherface", "xenomorph", "cenobite", "predator", "terminator", "freddy", "jason", "babadook", "jaws", "brundlefly", "gremlin", "pennywise", "jigsaw", "samara", "hannibal", "michael-myers"];
-  var monster = ["jaws"]
+  var monster = ["pyramid-head", "leatherface", "xenomorph", "cenobite", "predator", "terminator", "freddy", "jason", "babadook", "jaws", "brundlefly", "gremlin", "pennywise", "jigsaw", "samara", "hannibal", "michael-myers"];
   var word;
   word = monster[Math.floor(Math.random() * monster.length)];
   var guess;
@@ -43,8 +42,11 @@ window.onload = function() {
   verify = function(userGuess) {
     if (userGuesses.length > 0) {
       for (var i = 0; i < userGuesses.length; i++) {
-        return (userGuess != userGuesses[i]) ? false : true;
+        if (userGuess === userGuesses[i]){ 
+          return true
+        }
       }
+      return false;
     } else {
       return false;
     }
@@ -82,12 +84,14 @@ window.onload = function() {
           correct.parentNode.removeChild(correct);
           play();
           $("#prizename").empty();
+          userGuesses = [];
         }
         $(".class").empty();
         if (right === word.length || right > word.length) {
           var audio = new Audio('assets/yay.mp3');
           audio.play();
           wins++;
+          userGuesses = [];
           document.getElementById("wins").innerHTML = wins;
           document.getElementById("prize").src = "assets/images/" + word + ".png";
           document.getElementById("prizename").innerHTML = word;
@@ -111,7 +115,7 @@ window.onload = function() {
 
   play();
   confirm();
-  game();
+  // game();
 
   document.getElementById("wins").innerHTML = wins;
 }
