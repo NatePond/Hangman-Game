@@ -1,4 +1,7 @@
 window.onload = function() {
+  var audio = new Audio("assets/MisfitsMonsterMash.mp4");
+  audio.play();
+  audio.loop = true;
   var wins = 0;
   var limbs = 7;
   var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h",
